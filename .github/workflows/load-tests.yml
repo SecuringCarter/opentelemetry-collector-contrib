@@ -56,7 +56,7 @@ jobs:
         run: ./.github/workflows/scripts/setup_e2e_tests.sh
 
   loadtest:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: [setup-environment]
     strategy:
       fail-fast: false
@@ -119,7 +119,7 @@ jobs:
         run: issuegenerator $TEST_RESULTS
 
   update-benchmarks:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: [loadtest]
     if: github.event_name != 'pull_request'
     steps:
